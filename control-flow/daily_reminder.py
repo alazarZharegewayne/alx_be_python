@@ -5,19 +5,22 @@ def set_reminder():
 
     match priority:
         case "high":
-            urgency = "requires immediate attention today!"
+            if time_bound == "yes":
+                print(f"\nReminder: '{task}' is a high priority task that requires immediate attention today!")
+            else:
+                print(f"\nReminder: '{task}' is a high priority task.")
         case "medium":
-            urgency = "should be completed soon."
+            if time_bound == "yes":
+                print(f"\nReminder: '{task}' is a medium priority task that requires immediate attention today!")
+            else:
+                print(f"\nNote: '{task}' is a medium priority task.")
         case "low":
-            urgency = "consider completing it when you have free time."
+            if time_bound == "yes":
+                print(f"\nReminder: '{task}' is a low priority task that requires immediate attention today!")
+            else:
+                print(f"\nNote: '{task}' is a low priority task. Consider completing it when you have free time.")
         case _:
-            urgency = "has unspecified priority."
-
-    if time_bound == "yes":
-        urgency = urgency.replace("soon", "immediate attention today")
-        urgency = urgency.replace("consider", "requires")
-
-    print(f"\nReminder: '{task}' is a {priority} priority task {urgency}")
+            print("\nInvalid priority level entered.")
 
 if __name__ == "__main__":
     set_reminder()
