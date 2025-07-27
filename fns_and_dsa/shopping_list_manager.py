@@ -1,52 +1,36 @@
 def display_menu():
-    print("\nShopping List Manager")
+    print("Shopping List Manager")
     print("1. Add Item")
     print("2. Remove Item")
     print("3. View List")
     print("4. Exit")
 
-
 def main():
     shopping_list = []
     while True:
         display_menu()
-        choice = input("Enter your choice (1-4): ")
+        choice = input("Enter your choice: ")
 
         if choice == '1':
-            item = input("Enter item to add: ").strip()
-            if item:
-                shopping_list.append(item)
-                print(f"'{item}' added to the list.")
-            else:
-                print("Item cannot be empty!")
-
+            item = input("Enter item to add: ")
+            shopping_list.append(item)
+            print(f"'{item}' added to your list.")
         elif choice == '2':
-            if not shopping_list:
-                print("Your shopping list is empty!")
-                continue
-
-            item = input("Enter item to remove: ").strip()
+            item = input("Enter item to remove: ")
             if item in shopping_list:
                 shopping_list.remove(item)
-                print(f"'{item}' removed from the list.")
+                print(f"'{item}' removed from your list.")
             else:
-                print(f"'{item}' not found in the list.")
-
+                print(f"'{item}' not found in your list.")
         elif choice == '3':
-            if not shopping_list:
-                print("Your shopping list is empty!")
-            else:
-                print("\nCurrent Shopping List:")
-                for i, item in enumerate(shopping_list, 1):
-                    print(f"{i}. {item}")
-
+            print("Your Shopping List:")
+            for item in shopping_list:
+                print(f"- {item}")
         elif choice == '4':
             print("Goodbye!")
             break
-
         else:
-            print("Invalid choice. Please enter a number 1-4.")
-
+            print("Invalid choice. Please try again.")
 
 if __name__ == "__main__":
     main()
